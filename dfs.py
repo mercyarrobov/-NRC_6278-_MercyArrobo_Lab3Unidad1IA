@@ -138,3 +138,6 @@ if __name__ == "__main__":
     grafo.agregar_aristas(1, 3)
     grafo.agregar_aristas(2, 3)
     grafo.agregar_aristas(3, 4)
+    
+    #Almacenamiento interno del grafo a la clase
+    grafo.imprimir_lista_de_ady() #Imprime las lista de adyacencia del nodo con su nodo y peso
