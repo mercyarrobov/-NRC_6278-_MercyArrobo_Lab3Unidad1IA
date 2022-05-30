@@ -131,3 +131,10 @@ if __name__ == "__main__":
     
     # Crea una instancia para la clase grafo y lo define con 5 nodo y que sea no directo
     grafo= Grafo(5, directo=False)  
+    
+    # Agregar al grafo las aristas con un peso
+    grafo.agregar_aristas(0, 1)
+    grafo.agregar_aristas(0, 2)
+    grafo.agregar_aristas(1, 3)
+    grafo.agregar_aristas(2, 3)
+    grafo.agregar_aristas(3, 4)
