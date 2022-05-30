@@ -126,4 +126,8 @@ class Grafo:
         camino.pop()
         #Regresamos como resultado
         return None
+    #main del programa
+if __name__ == "__main__":
     
+    # Crea una instancia para la clase grafo y lo define con 5 nodo y que sea no directo
+    grafo= Grafo(5, directo=False)  
