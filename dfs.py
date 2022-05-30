@@ -141,3 +141,9 @@ if __name__ == "__main__":
     
     #Almacenamiento interno del grafo a la clase
     grafo.imprimir_lista_de_ady() #Imprime las lista de adyacencia del nodo con su nodo y peso
+    
+    #Se almacena en una lista el camino transversal
+    camino_transversal = [] 
+    # Ruta para hallar desde el nodo 0 al nodo 3
+    camino_transversal = grafo.dfs(0, 3) 
+    print(" El camino transversal del nodo 0 al nodo 3 es: ")
