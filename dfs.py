@@ -83,3 +83,47 @@ class Grafo:
         for key in self.m_lista_ady.keys():
              #Imprimi la lista de nodos con su clave
             print("nodo:    ", key, ": ", self.m_lista_ady[key])
+            
+    def dfs(self, inicio, objetivo, camino=[], nodo_visitado=set()):
+        
+        """
+        Método recursivo para encontrar el camino más corto desde un nodo de inicio hasta un nodo de destino.
+
+        Parámetros
+        ----------
+        comienzo : int
+            nodo de partida
+        objetivo : int
+            nodo de llegada
+        peso : int
+            peso del nodo
+        
+        retorna: El nodo que contiene el valor de destino o null si no existe.
+            
+        """
+        #Agregar nuevos elementos a la lista.
+        camino.append(inicio) 
+        #Marcamos como visitado agregándolo a un conjunto de nodos visitados
+        nodo_visitado.add(inicio) 
+        # Si el inicio es igual al objetivo
+        if inicio == objetivo:  
+            # retorna a inicio
+            return camino  
+        
+        # Recorrer todas las ramas vecinas que no son visitadas de la lista adyacencia
+        for (nodos_no_visitados, weight) in self.m_lista_ady[inicio]:
+            
+            #comprobar si un nodo no visitado no está en la lista 
+            if nodos_no_visitados not in nodo_visitado: 
+                # Guardamos una referencia al resultado si un elemento no está presente en una lista.
+                resultado = self.dfs(nodos_no_visitados, objetivo, camino, nodo_visitado)
+                # Se envia a los nodos no visitado, objetivo, camino y nodo visitado.
+                if resultado is not None:  # Si la llamada recursiva no regresa, eso significa que hemos encontrado nuestro nodo objetivo 
+                    #Devolvemos la ruta transversal como resultado
+                    return resultado
+                
+        #Eliminamos el nodo actual de la ruta 
+        camino.pop()
+        #Regresamos como resultado
+        return None
+    
