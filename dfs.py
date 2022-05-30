@@ -75,3 +75,11 @@ class Grafo:
         if not self.m_directo:
             #Pero también en la dirección opuesta
             self.m_lista_ady[nodo2].add((nodo1, peso))
+            
+    def imprimir_lista_de_ady(self):
+        """ Función que imprimir la representación del grafo
+        """
+         #Agrega clave y recorre las listas adyacentes
+        for key in self.m_lista_ady.keys():
+             #Imprimi la lista de nodos con su clave
+            print("nodo:    ", key, ": ", self.m_lista_ady[key])
