@@ -102,23 +102,24 @@ class Grafo:
             
         """
         #Agregar nuevos elementos a la lista.
-        camino.append(inicio) 
+        camino.append(inicio)
         #Marcamos como visitado agregándolo a un conjunto de nodos visitados
-        nodo_visitado.add(inicio) 
+        nodo_visitado.add(inicio)
         # Si el inicio es igual al objetivo
-        if inicio == objetivo:  
+        if inicio == objetivo:
             # retorna a inicio
-            return camino  
-        
+            return camino
+
         # Recorrer todas las ramas vecinas que no son visitadas de la lista adyacencia
-        for (nodos_no_visitados, weight) in self.m_lista_ady[inicio]:
-            
-            #comprobar si un nodo no visitado no está en la lista 
-            if nodos_no_visitados not in nodo_visitado: 
+        for (nodos_no_visitados, peso) in self.m_lista_ady[inicio]:
+
+            #comprobar si un nodo no visitado no está en la lista
+            if nodos_no_visitados not in nodo_visitado:
                 # Guardamos una referencia al resultado si un elemento no está presente en una lista.
-                resultado = self.dfs(nodos_no_visitados, objetivo, camino, nodo_visitado)
+                resultado = self.dfs(nodos_no_visitados,
+                                     objetivo, camino, nodo_visitado)
                 # Se envia a los nodos no visitado, objetivo, camino y nodo visitado.
-                if resultado is not None:  # Si la llamada recursiva no regresa, eso significa que hemos encontrado nuestro nodo objetivo 
+                if resultado is not None:  # Si la llamada recursiva no regresa, eso significa que hemos encontrado nuestro nodo objetivo
                     #Devolvemos la ruta transversal como resultado
                     return resultado
                 
@@ -129,21 +130,75 @@ class Grafo:
     #main del programa
 if __name__ == "__main__":
     
-    # Crea una instancia para la clase grafo y lo define con 5 nodo y que sea no directo
-    grafo= Grafo(5, directo=False)  
+    #PRUEBA 1
+    print("Grafo 1")
+    #Se crea o instancia el grafo con 5 nodos y no dirigido
+    print("Agregando aristas al grafo")
+    #Agregar las aristas
+    grafo1= Grafo(5, directo=False)  
     
     # Agregar al grafo las aristas con un peso
-    grafo.agregar_aristas(0, 1)
-    grafo.agregar_aristas(0, 2)
-    grafo.agregar_aristas(1, 3)
-    grafo.agregar_aristas(2, 3)
-    grafo.agregar_aristas(3, 4)
+    
+    grafo1.agregar_aristas(0, 1)
+    grafo1.agregar_aristas(0, 2)
+    grafo1.agregar_aristas(0, 4)
+    grafo1.agregar_aristas(1, 4)
+    grafo1.agregar_aristas(1, 3)
+
     
     #Almacenamiento interno del grafo a la clase
-    grafo.imprimir_lista_de_ady() #Imprime las lista de adyacencia del nodo con su nodo y peso
-    
+    grafo1.imprimir_lista_de_ady() #Imprime las lista de adyacencia del nodo con su nodo y peso
     #Se almacena en una lista el camino transversal
     camino_transversal = [] 
     # Ruta para hallar desde el nodo 0 al nodo 3
-    camino_transversal = grafo.dfs(0, 3) 
-    print(" El camino transversal del nodo 0 al nodo 3 es: ")
+    camino_transversal = grafo1.dfs(0, 3) 
+    print(f" El camino transversal del nodo 0 al nodo 3 es:{camino_transversal}" )
+   
+    
+    #PRUEBA 2
+    print("\n\nGrafo 2")
+    #Se crea o instancia el grafo con 7 nodos y no dirigido
+    print("Agregando aristas al grafo")
+    #Agregar las aristas
+    grafo2= Grafo(7, directo=False)  
+    
+    # Agregar al grafo las aristas con un peso
+    
+    grafo2.agregar_aristas(0, 1)
+    grafo2.agregar_aristas(0, 2)
+    grafo2.agregar_aristas(1, 4)
+    grafo2.agregar_aristas(4, 5)
+    grafo2.agregar_aristas(1, 3)
+    grafo2.agregar_aristas(2, 6)
+    
+     #Almacenamiento interno del grafo a la clase
+    grafo2.imprimir_lista_de_ady() #Imprime las lista de adyacencia del nodo con su nodo y peso
+    #Se almacena en una lista el camino transversal
+    camino_transversal = [] 
+    # Ruta para hallar desde el nodo 0 al nodo 3
+    camino_transversal = grafo2.dfs(0, 4) 
+    print(f" El camino transversal del nodo 0 al nodo 4 es:{camino_transversal}" )
+    
+    
+    #PRUEBA 3
+    print("\n\nGrafo 3")
+    #Se crea o instancia el grafo con 5 nodos y no dirigido
+    print("Agregando aristas al grafo")
+    #Agregar las aristas
+    grafo3= Grafo(5, directo=False)  
+    
+    # Agregar al grafo las aristas con un peso
+    
+    grafo3.agregar_aristas(0, 1)
+    grafo3.agregar_aristas(1, 2)
+    grafo3.agregar_aristas(0, 3)
+    grafo3.agregar_aristas(0, 2)
+    grafo3.agregar_aristas(2, 4)
+    
+    #Almacenamiento interno del grafo a la clase
+    grafo3.imprimir_lista_de_ady() #Imprime las lista de adyacencia del nodo con su nodo y peso
+    #Se almacena en una lista el camino transversal
+    camino_transversal = [] 
+    # Ruta para hallar desde el nodo 0 al nodo 3
+    camino_transversal = grafo3.dfs(0, 3) 
+    print(f" El camino transversal del nodo 0 al nodo 3 es:{camino_transversal}" )
